@@ -8,10 +8,10 @@ import {
   SidebarGroupLabel,
   SidebarMenu,
 } from "../ui/sidebar";
-// import { Credits } from "./credits";
+import { Credits } from "./credits";
 import { User } from "lucide-react";
 import SidebarMenuItems from "./sidebar-menu-items";
-// import Upgrade from "./upgrade";
+import Upgrade from "./upgrade";
 
 export async function AppSidebar() {
   return (
@@ -31,8 +31,8 @@ export async function AppSidebar() {
       </SidebarContent>
       <SidebarFooter>
         <div className="mb-2 flex w-full items-center justify-center gap-1 text-xs">
-          {/* <Credits />
-          <Upgrade /> */}
+          <Credits />
+          <Upgrade />
         </div>
         <UserButton
           variant="outline"
