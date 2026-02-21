@@ -3839,6 +3839,7 @@ export namespace Prisma {
   }
 
   export type SongAvgAggregateOutputType = {
+    guidanceScale: number | null
     inferStep: number | null
     audioDuration: number | null
     seed: number | null
@@ -3846,6 +3847,7 @@ export namespace Prisma {
   }
 
   export type SongSumAggregateOutputType = {
+    guidanceScale: number | null
     inferStep: number | null
     audioDuration: number | null
     seed: number | null
@@ -3863,7 +3865,7 @@ export namespace Prisma {
     lyrics: string | null
     fullDescribedSong: string | null
     describedLyrics: string | null
-    guidanceScale: string | null
+    guidanceScale: number | null
     inferStep: number | null
     audioDuration: number | null
     seed: number | null
@@ -3885,7 +3887,7 @@ export namespace Prisma {
     lyrics: string | null
     fullDescribedSong: string | null
     describedLyrics: string | null
-    guidanceScale: string | null
+    guidanceScale: number | null
     inferStep: number | null
     audioDuration: number | null
     seed: number | null
@@ -3921,6 +3923,7 @@ export namespace Prisma {
 
 
   export type SongAvgAggregateInputType = {
+    guidanceScale?: true
     inferStep?: true
     audioDuration?: true
     seed?: true
@@ -3928,6 +3931,7 @@ export namespace Prisma {
   }
 
   export type SongSumAggregateInputType = {
+    guidanceScale?: true
     inferStep?: true
     audioDuration?: true
     seed?: true
@@ -4098,7 +4102,7 @@ export namespace Prisma {
     lyrics: string | null
     fullDescribedSong: string | null
     describedLyrics: string | null
-    guidanceScale: string | null
+    guidanceScale: number | null
     inferStep: number | null
     audioDuration: number | null
     seed: number | null
@@ -4254,7 +4258,7 @@ export namespace Prisma {
       lyrics: string | null
       fullDescribedSong: string | null
       describedLyrics: string | null
-      guidanceScale: string | null
+      guidanceScale: number | null
       inferStep: number | null
       audioDuration: number | null
       seed: number | null
@@ -4699,7 +4703,7 @@ export namespace Prisma {
     readonly lyrics: FieldRef<"Song", 'String'>
     readonly fullDescribedSong: FieldRef<"Song", 'String'>
     readonly describedLyrics: FieldRef<"Song", 'String'>
-    readonly guidanceScale: FieldRef<"Song", 'String'>
+    readonly guidanceScale: FieldRef<"Song", 'Float'>
     readonly inferStep: FieldRef<"Song", 'Float'>
     readonly audioDuration: FieldRef<"Song", 'Float'>
     readonly seed: FieldRef<"Song", 'Float'>
@@ -9870,7 +9874,7 @@ export namespace Prisma {
     lyrics?: StringNullableFilter<"Song"> | string | null
     fullDescribedSong?: StringNullableFilter<"Song"> | string | null
     describedLyrics?: StringNullableFilter<"Song"> | string | null
-    guidanceScale?: StringNullableFilter<"Song"> | string | null
+    guidanceScale?: FloatNullableFilter<"Song"> | number | null
     inferStep?: FloatNullableFilter<"Song"> | number | null
     audioDuration?: FloatNullableFilter<"Song"> | number | null
     seed?: FloatNullableFilter<"Song"> | number | null
@@ -9923,7 +9927,7 @@ export namespace Prisma {
     lyrics?: StringNullableFilter<"Song"> | string | null
     fullDescribedSong?: StringNullableFilter<"Song"> | string | null
     describedLyrics?: StringNullableFilter<"Song"> | string | null
-    guidanceScale?: StringNullableFilter<"Song"> | string | null
+    guidanceScale?: FloatNullableFilter<"Song"> | number | null
     inferStep?: FloatNullableFilter<"Song"> | number | null
     audioDuration?: FloatNullableFilter<"Song"> | number | null
     seed?: FloatNullableFilter<"Song"> | number | null
@@ -9978,7 +9982,7 @@ export namespace Prisma {
     lyrics?: StringNullableWithAggregatesFilter<"Song"> | string | null
     fullDescribedSong?: StringNullableWithAggregatesFilter<"Song"> | string | null
     describedLyrics?: StringNullableWithAggregatesFilter<"Song"> | string | null
-    guidanceScale?: StringNullableWithAggregatesFilter<"Song"> | string | null
+    guidanceScale?: FloatNullableWithAggregatesFilter<"Song"> | number | null
     inferStep?: FloatNullableWithAggregatesFilter<"Song"> | number | null
     audioDuration?: FloatNullableWithAggregatesFilter<"Song"> | number | null
     seed?: FloatNullableWithAggregatesFilter<"Song"> | number | null
@@ -10401,7 +10405,7 @@ export namespace Prisma {
     lyrics?: string | null
     fullDescribedSong?: string | null
     describedLyrics?: string | null
-    guidanceScale?: string | null
+    guidanceScale?: number | null
     inferStep?: number | null
     audioDuration?: number | null
     seed?: number | null
@@ -10425,7 +10429,7 @@ export namespace Prisma {
     lyrics?: string | null
     fullDescribedSong?: string | null
     describedLyrics?: string | null
-    guidanceScale?: string | null
+    guidanceScale?: number | null
     inferStep?: number | null
     audioDuration?: number | null
     seed?: number | null
@@ -10449,7 +10453,7 @@ export namespace Prisma {
     lyrics?: NullableStringFieldUpdateOperationsInput | string | null
     fullDescribedSong?: NullableStringFieldUpdateOperationsInput | string | null
     describedLyrics?: NullableStringFieldUpdateOperationsInput | string | null
-    guidanceScale?: NullableStringFieldUpdateOperationsInput | string | null
+    guidanceScale?: NullableFloatFieldUpdateOperationsInput | number | null
     inferStep?: NullableFloatFieldUpdateOperationsInput | number | null
     audioDuration?: NullableFloatFieldUpdateOperationsInput | number | null
     seed?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -10473,7 +10477,7 @@ export namespace Prisma {
     lyrics?: NullableStringFieldUpdateOperationsInput | string | null
     fullDescribedSong?: NullableStringFieldUpdateOperationsInput | string | null
     describedLyrics?: NullableStringFieldUpdateOperationsInput | string | null
-    guidanceScale?: NullableStringFieldUpdateOperationsInput | string | null
+    guidanceScale?: NullableFloatFieldUpdateOperationsInput | number | null
     inferStep?: NullableFloatFieldUpdateOperationsInput | number | null
     audioDuration?: NullableFloatFieldUpdateOperationsInput | number | null
     seed?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -10497,7 +10501,7 @@ export namespace Prisma {
     lyrics?: string | null
     fullDescribedSong?: string | null
     describedLyrics?: string | null
-    guidanceScale?: string | null
+    guidanceScale?: number | null
     inferStep?: number | null
     audioDuration?: number | null
     seed?: number | null
@@ -10519,7 +10523,7 @@ export namespace Prisma {
     lyrics?: NullableStringFieldUpdateOperationsInput | string | null
     fullDescribedSong?: NullableStringFieldUpdateOperationsInput | string | null
     describedLyrics?: NullableStringFieldUpdateOperationsInput | string | null
-    guidanceScale?: NullableStringFieldUpdateOperationsInput | string | null
+    guidanceScale?: NullableFloatFieldUpdateOperationsInput | number | null
     inferStep?: NullableFloatFieldUpdateOperationsInput | number | null
     audioDuration?: NullableFloatFieldUpdateOperationsInput | number | null
     seed?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -10540,7 +10544,7 @@ export namespace Prisma {
     lyrics?: NullableStringFieldUpdateOperationsInput | string | null
     fullDescribedSong?: NullableStringFieldUpdateOperationsInput | string | null
     describedLyrics?: NullableStringFieldUpdateOperationsInput | string | null
-    guidanceScale?: NullableStringFieldUpdateOperationsInput | string | null
+    guidanceScale?: NullableFloatFieldUpdateOperationsInput | number | null
     inferStep?: NullableFloatFieldUpdateOperationsInput | number | null
     audioDuration?: NullableFloatFieldUpdateOperationsInput | number | null
     seed?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -11137,6 +11141,7 @@ export namespace Prisma {
   }
 
   export type SongAvgOrderByAggregateInput = {
+    guidanceScale?: SortOrder
     inferStep?: SortOrder
     audioDuration?: SortOrder
     seed?: SortOrder
@@ -11188,6 +11193,7 @@ export namespace Prisma {
   }
 
   export type SongSumOrderByAggregateInput = {
+    guidanceScale?: SortOrder
     inferStep?: SortOrder
     audioDuration?: SortOrder
     seed?: SortOrder
@@ -12116,7 +12122,7 @@ export namespace Prisma {
     lyrics?: string | null
     fullDescribedSong?: string | null
     describedLyrics?: string | null
-    guidanceScale?: string | null
+    guidanceScale?: number | null
     inferStep?: number | null
     audioDuration?: number | null
     seed?: number | null
@@ -12139,7 +12145,7 @@ export namespace Prisma {
     lyrics?: string | null
     fullDescribedSong?: string | null
     describedLyrics?: string | null
-    guidanceScale?: string | null
+    guidanceScale?: number | null
     inferStep?: number | null
     audioDuration?: number | null
     seed?: number | null
@@ -12302,7 +12308,7 @@ export namespace Prisma {
     lyrics?: StringNullableFilter<"Song"> | string | null
     fullDescribedSong?: StringNullableFilter<"Song"> | string | null
     describedLyrics?: StringNullableFilter<"Song"> | string | null
-    guidanceScale?: StringNullableFilter<"Song"> | string | null
+    guidanceScale?: FloatNullableFilter<"Song"> | number | null
     inferStep?: FloatNullableFilter<"Song"> | number | null
     audioDuration?: FloatNullableFilter<"Song"> | number | null
     seed?: FloatNullableFilter<"Song"> | number | null
@@ -12384,7 +12390,7 @@ export namespace Prisma {
     lyrics?: string | null
     fullDescribedSong?: string | null
     describedLyrics?: string | null
-    guidanceScale?: string | null
+    guidanceScale?: number | null
     inferStep?: number | null
     audioDuration?: number | null
     seed?: number | null
@@ -12407,7 +12413,7 @@ export namespace Prisma {
     lyrics?: string | null
     fullDescribedSong?: string | null
     describedLyrics?: string | null
-    guidanceScale?: string | null
+    guidanceScale?: number | null
     inferStep?: number | null
     audioDuration?: number | null
     seed?: number | null
@@ -12487,7 +12493,7 @@ export namespace Prisma {
     lyrics?: NullableStringFieldUpdateOperationsInput | string | null
     fullDescribedSong?: NullableStringFieldUpdateOperationsInput | string | null
     describedLyrics?: NullableStringFieldUpdateOperationsInput | string | null
-    guidanceScale?: NullableStringFieldUpdateOperationsInput | string | null
+    guidanceScale?: NullableFloatFieldUpdateOperationsInput | number | null
     inferStep?: NullableFloatFieldUpdateOperationsInput | number | null
     audioDuration?: NullableFloatFieldUpdateOperationsInput | number | null
     seed?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -12510,7 +12516,7 @@ export namespace Prisma {
     lyrics?: NullableStringFieldUpdateOperationsInput | string | null
     fullDescribedSong?: NullableStringFieldUpdateOperationsInput | string | null
     describedLyrics?: NullableStringFieldUpdateOperationsInput | string | null
-    guidanceScale?: NullableStringFieldUpdateOperationsInput | string | null
+    guidanceScale?: NullableFloatFieldUpdateOperationsInput | number | null
     inferStep?: NullableFloatFieldUpdateOperationsInput | number | null
     audioDuration?: NullableFloatFieldUpdateOperationsInput | number | null
     seed?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -12676,7 +12682,7 @@ export namespace Prisma {
     lyrics?: string | null
     fullDescribedSong?: string | null
     describedLyrics?: string | null
-    guidanceScale?: string | null
+    guidanceScale?: number | null
     inferStep?: number | null
     audioDuration?: number | null
     seed?: number | null
@@ -12699,7 +12705,7 @@ export namespace Prisma {
     lyrics?: string | null
     fullDescribedSong?: string | null
     describedLyrics?: string | null
-    guidanceScale?: string | null
+    guidanceScale?: number | null
     inferStep?: number | null
     audioDuration?: number | null
     seed?: number | null
@@ -13000,7 +13006,7 @@ export namespace Prisma {
     lyrics?: string | null
     fullDescribedSong?: string | null
     describedLyrics?: string | null
-    guidanceScale?: string | null
+    guidanceScale?: number | null
     inferStep?: number | null
     audioDuration?: number | null
     seed?: number | null
@@ -13113,7 +13119,7 @@ export namespace Prisma {
     lyrics?: NullableStringFieldUpdateOperationsInput | string | null
     fullDescribedSong?: NullableStringFieldUpdateOperationsInput | string | null
     describedLyrics?: NullableStringFieldUpdateOperationsInput | string | null
-    guidanceScale?: NullableStringFieldUpdateOperationsInput | string | null
+    guidanceScale?: NullableFloatFieldUpdateOperationsInput | number | null
     inferStep?: NullableFloatFieldUpdateOperationsInput | number | null
     audioDuration?: NullableFloatFieldUpdateOperationsInput | number | null
     seed?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -13136,7 +13142,7 @@ export namespace Prisma {
     lyrics?: NullableStringFieldUpdateOperationsInput | string | null
     fullDescribedSong?: NullableStringFieldUpdateOperationsInput | string | null
     describedLyrics?: NullableStringFieldUpdateOperationsInput | string | null
-    guidanceScale?: NullableStringFieldUpdateOperationsInput | string | null
+    guidanceScale?: NullableFloatFieldUpdateOperationsInput | number | null
     inferStep?: NullableFloatFieldUpdateOperationsInput | number | null
     audioDuration?: NullableFloatFieldUpdateOperationsInput | number | null
     seed?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -13159,7 +13165,7 @@ export namespace Prisma {
     lyrics?: NullableStringFieldUpdateOperationsInput | string | null
     fullDescribedSong?: NullableStringFieldUpdateOperationsInput | string | null
     describedLyrics?: NullableStringFieldUpdateOperationsInput | string | null
-    guidanceScale?: NullableStringFieldUpdateOperationsInput | string | null
+    guidanceScale?: NullableFloatFieldUpdateOperationsInput | number | null
     inferStep?: NullableFloatFieldUpdateOperationsInput | number | null
     audioDuration?: NullableFloatFieldUpdateOperationsInput | number | null
     seed?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -13231,7 +13237,7 @@ export namespace Prisma {
     lyrics?: NullableStringFieldUpdateOperationsInput | string | null
     fullDescribedSong?: NullableStringFieldUpdateOperationsInput | string | null
     describedLyrics?: NullableStringFieldUpdateOperationsInput | string | null
-    guidanceScale?: NullableStringFieldUpdateOperationsInput | string | null
+    guidanceScale?: NullableFloatFieldUpdateOperationsInput | number | null
     inferStep?: NullableFloatFieldUpdateOperationsInput | number | null
     audioDuration?: NullableFloatFieldUpdateOperationsInput | number | null
     seed?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -13254,7 +13260,7 @@ export namespace Prisma {
     lyrics?: NullableStringFieldUpdateOperationsInput | string | null
     fullDescribedSong?: NullableStringFieldUpdateOperationsInput | string | null
     describedLyrics?: NullableStringFieldUpdateOperationsInput | string | null
-    guidanceScale?: NullableStringFieldUpdateOperationsInput | string | null
+    guidanceScale?: NullableFloatFieldUpdateOperationsInput | number | null
     inferStep?: NullableFloatFieldUpdateOperationsInput | number | null
     audioDuration?: NullableFloatFieldUpdateOperationsInput | number | null
     seed?: NullableFloatFieldUpdateOperationsInput | number | null
@@ -13277,7 +13283,7 @@ export namespace Prisma {
     lyrics?: NullableStringFieldUpdateOperationsInput | string | null
     fullDescribedSong?: NullableStringFieldUpdateOperationsInput | string | null
     describedLyrics?: NullableStringFieldUpdateOperationsInput | string | null
-    guidanceScale?: NullableStringFieldUpdateOperationsInput | string | null
+    guidanceScale?: NullableFloatFieldUpdateOperationsInput | number | null
     inferStep?: NullableFloatFieldUpdateOperationsInput | number | null
     audioDuration?: NullableFloatFieldUpdateOperationsInput | number | null
     seed?: NullableFloatFieldUpdateOperationsInput | number | null

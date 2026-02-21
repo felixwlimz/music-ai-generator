@@ -50,7 +50,7 @@ model Song {
   lyrics            String?
   fullDescribedSong String?
   describedLyrics   String?
-  guidanceScale     String?
+  guidanceScale     Float?
   inferStep         Float?
   audioDuration     Float?
   seed              Float?

@@ -1,8 +1,11 @@
 import React from 'react'
+import { SongPanel } from '~/components/create/song-panel'
 
 const CreatePage = () => {
   return (
-    <div>CreatePage</div>
+    <div className='flex h-full flex-col lg:flex-row'>
+      <SongPanel/>
+    </div>
   )
 }
 

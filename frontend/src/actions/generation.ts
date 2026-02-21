@@ -6,7 +6,15 @@ import { inngest } from "~/inngest/client";
 import { auth } from "~/lib/auth";
 import { db } from "~/server/db";
 
-export async function queueSong() {
+export interface GenerateRequest {
+  prompt?: string;
+  lyrics?: string;
+  fullDescribedSong?: string;
+  describedLyrics?: string;
+  instrumental?: boolean;
+}
+
+export async function generateSong(generateRequest: GenerateRequest) {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -14,12 +22,38 @@ export async function queueSong() {
   if (!session) {
     redirect("/auth/sign-in");
   }
+}
+
+export async function queueSong(
+  generateRequest: GenerateRequest,
+  guidanceScale: number,
+  userId: string,
+) {
+  let title = "Untitled";
+
+  if (generateRequest.describedLyrics) {
+    title = generateRequest.describedLyrics;
+  }
+
+  if (generateRequest.lyrics) {
+    title = generateRequest.lyrics;
+  }
+
+  if (generateRequest.fullDescribedSong) {
+    title = generateRequest.fullDescribedSong;
+  }
+
+  title = title.charAt(0).toUpperCase() + title.slice(1);
 
   const song = await db.song.create({
     data: {
-      userId: session.user.id,
-      title: "Test song 1",
-      fullDescribedSong: "Pop song",
+      userId: userId,
+      title: title,
+      prompt : generateRequest.prompt,
+      lyrics : generateRequest.lyrics,
+      fullDescribedSong : generateRequest.fullDescribedSong,
+      instrumental : generateRequest.instrumental,
+      guidanceScale : guidanceScale
     },
   });
 
