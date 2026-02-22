@@ -34,7 +34,16 @@ export async function AppSidebar() {
           <Credits />
           <Upgrade />
         </div>
-        <UserButton variant="outline" additionalLinks={[]} />
+        <UserButton
+          variant="outline"
+          additionalLinks={[
+            {
+              label: "Customer Portal",
+              href: "/customer-portal",
+              icon: <User />,
+            },
+          ]}
+        />
       </SidebarFooter>
     </Sidebar>
   );
