@@ -54,7 +54,7 @@ export const generateSong = inngest.createFunction(
         });
 
         type RequestBody = {
-          guidance_scale?: string;
+          guidance_scale?: number;
           infer_step?: number;
           audio_duration?: number;
           seed?: number;
@@ -83,7 +83,7 @@ export const generateSong = inngest.createFunction(
             ...commonParams,
           };
         } else if (song.lyrics) {
-          endpoint = env.GENERATE_WITH_DESCRIBED_LYRICS;
+          endpoint = env.GENERATE_WITH_LYRICS;
           body = {
             lyrics: song.lyrics,
             prompt: song.prompt ?? undefined,
@@ -118,6 +118,10 @@ export const generateSong = inngest.createFunction(
           },
         });
       });
+      
+      console.log("Calling endpoint:", endpoint);
+      console.log("With body:", JSON.stringify(body, null, 2));
+      
       const response = await step.fetch(endpoint, {
         method: "POST",
         body: JSON.stringify(body),
@@ -127,15 +131,31 @@ export const generateSong = inngest.createFunction(
           "Modal-Secret": env.MODAL_SECRET,
         },
       });
+      
+      console.log("Response status:", response.status);
+      console.log("Response ok:", response.ok);
 
       await step.run("update-song-result", async () => {
-        const responseData = response.ok
-          ? ((await response.json()) as {
+        let responseData = null;
+        let errorMessage = null;
+        
+        try {
+          if (response.ok) {
+            responseData = (await response.json()) as {
               s3_key: string;
               cover_image_s3_key: string;
               categories: string[];
-            })
-          : null;
+            };
+            console.log("Response data:", responseData);
+          } else {
+            const errorText = await response.text();
+            errorMessage = errorText;
+            console.error("Error response:", errorText);
+          }
+        } catch (error) {
+          console.error("Error parsing response:", error);
+          errorMessage = String(error);
+        }
 
         await db.song.update({
           where: {
