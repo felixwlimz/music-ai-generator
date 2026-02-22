@@ -23,6 +23,8 @@ import {
 } from "../ui/dropdown-menu";
 import { Badge } from "../ui/badge";
 import { getPlayUrl } from "~/actions/generation";
+import { renameSong, setPublishedStatus } from "~/actions/song";
+import { RenameDialog } from "./rename-dialog";
 
 export interface Track {
   id: string;
@@ -200,7 +202,10 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
                         <Button
                           onClick={async (e) => {
                             e.stopPropagation();
-                            // await setPublishedStatus(track.id, !track.published);
+                            await setPublishedStatus(
+                              track.id,
+                              !track.published,
+                            );
                           }}
                           variant="outline"
                           size="sm"
@@ -235,12 +240,29 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
                           </DropdownMenuContent>
                         </DropdownMenu>
                       </div>
+                      {trackToRename && (
+                        <RenameDialog
+                          track={trackToRename}
+                          onClose={() => setTrackToRename(null)}
+                          onRename={(trackId, newTitle) =>
+                            renameSong(trackId, newTitle)
+                          }
+                        />
+                      )}
                     </div>
                   );
               }
             })
           ) : (
-            <></>
+            <div className="flex flex-col items-center justify-center pt-20 text-center">
+              <Music className="text-muted-foreground h-10 w-10" />
+              <h2 className="mt-4 text-lg font-semibold">No Music Yet</h2>
+              <p className="text-muted-foreground mt-1 text-sm">
+                {searchQuery
+                  ? "No tracks match your search."
+                  : "Create your first song to get started."}
+              </p>
+            </div>
           )}
         </div>
       </div>
