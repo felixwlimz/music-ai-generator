@@ -25,6 +25,8 @@ import { Badge } from "../ui/badge";
 import { getPlayUrl } from "~/actions/generation";
 import { renameSong, setPublishedStatus } from "~/actions/song";
 import { RenameDialog } from "./rename-dialog";
+import { useRouter } from "next/navigation";
+import { usePlayerStore } from "~/stores/use-player-store";
 
 export interface Track {
   id: string;
@@ -48,12 +50,29 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
   const [loadingTrackId, setLoadingTrackid] = useState<string | null>(null);
   const [trackToRename, setTrackToRename] = useState<Track | null>(null);
 
+  const router = useRouter();
+  const { setTrack } = usePlayerStore();
+
   const handleTrackSelect = async (track: Track) => {
     if (loadingTrackId) return;
     setLoadingTrackid(track.id);
-    const playUrl = await getPlayUrl(track.id);
-
-    console.log(playUrl);
+    
+    try {
+      const playUrl = await getPlayUrl(track.id);
+      
+      setTrack({
+        id: track.id,
+        title: track.title,
+        url: playUrl,
+        artwork: track.thumbnailUrl,
+        prompt: track.prompt || track.fullDescribedSong,
+        createdByUsername: track.createdByUserName,
+      });
+    } catch (error) {
+      console.error("Failed to load track:", error);
+    } finally {
+      setLoadingTrackid(null);
+    }
   };
 
   const filteredTracks = tracks.filter(
@@ -61,6 +80,12 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
       track.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       track.prompt?.toLowerCase().includes(searchQuery.toLowerCase()),
   );
+
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    router.refresh()
+    setTimeout(() => setIsRefreshing(false), 1000)
+  }
 
   return (
     <div className="flex flex-1 flex-col overflow-y-scroll">
@@ -78,7 +103,7 @@ export function TrackList({ tracks }: { tracks: Track[] }) {
             disabled={isRefreshing}
             variant="outline"
             size="sm"
-            onClick={() => {}}
+            onClick={handleRefresh}
           >
             {isRefreshing ? (
               <Loader2Icon className="mr-2 animate-spin" />
